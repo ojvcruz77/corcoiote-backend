@@ -3,6 +3,6 @@ import {Router} from 'express';
 
 const routerUsers = Router();
 
-routerUsers.get('/', UserController.getAllUsers);
+routerUsers.use('/', UserController.getAllUsers);
 
 export default routerUsers;
