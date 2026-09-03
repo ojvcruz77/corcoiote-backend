@@ -1,11 +1,9 @@
-import users from "./mocks/user.mock.ts";
 import express from "express";
+import routerUsers from './routes/user.route.ts';
 
 const app = express();
 const port = 3000;
 
-app.get("/users", (_req, res) => {
-  res.status(200).json(users);
-});
+app.use("/users", routerUsers);
 
 app.listen(3000);
