@@ -1,5 +1,5 @@
 import users from "../mocks/user.mock.ts";
-import type { User, createUser } from "../types/user.type.ts";
+import type { User, CreateUser,UpdateUser } from "../types/user.type.ts";
 
 export function findAllUsers(): User[] {
   return users;
@@ -13,7 +13,7 @@ export function findUserById(id: number): User {
   return user;
 }
 
-export function InsertUser({ name, email, password }: createUser): User {
+export function InsertUser({ name, email, password }: CreateUser): User {
   const user: User = {
     id: users[users.length - 1].id + 1,
     name,
@@ -22,6 +22,18 @@ export function InsertUser({ name, email, password }: createUser): User {
   };
 
   users[users.length] = user;
+
+  return user;
+}
+
+export function modifyUser(id: number, { name, email, password }: UpdateUser): User {
+  const user = findUserById(id);
+
+  if(!user) throw new Error(`Usuário de id ${id} não encontrado.`);
+
+  if (name) user.name = name;
+  if (email) user.email = email;
+  if (password) user.password = password;
 
   return user;
 }
