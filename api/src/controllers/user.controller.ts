@@ -1,6 +1,6 @@
 import * as UserService from "../services/user.service.ts";
 import type { Request, Response } from "express";
-import type { CreateUser,UpdateUser } from "../types/user.type.ts";
+import type { CreateUser, UpdateUser } from "../types/user.type.ts";
 
 export function getAllUsers(_req: Request, res: Response): void {
   const users = UserService.findAllUsers();
@@ -32,4 +32,10 @@ export function updateUser(req: Request, res: Response): void {
   res.status(200).json(user);
 }
 
+export function removeUser(req: Request, res: Response): void {
+  const id = Number(req.params.id);
 
+  UserService.deleteUser(id);
+
+  res.status(204).send();
+}
