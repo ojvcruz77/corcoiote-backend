@@ -32,10 +32,10 @@ export function updateUser(req: Request, res: Response): void {
   res.status(200).json(user);
 }
 
-export function removeUser(req: Request, res: Response): void {
+export function deletUser(req: Request, res: Response): void {
   const id = Number(req.params.id);
 
-  UserService.deleteUser(id);
+  UserService.removeUser(id);
 
   res.status(204).send();
 }

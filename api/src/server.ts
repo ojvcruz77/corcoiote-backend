@@ -5,4 +5,4 @@ const app = express();
 const port = 3000;
 app.use(express.json());
 app.use("/users", routerUsers);
-app.listen(3000);
+app.listen(process.env.PORT)

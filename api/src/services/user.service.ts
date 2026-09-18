@@ -38,7 +38,7 @@ export function modifyUser(id: number, { name, email, password }: UpdateUser): U
   return user;
 }
 
-export function deleteUser(id: number): User {
+export function removeUser(id: number) {
   const user = findUserById(id);
 
   if(!user) throw new Error(`Usuário de id ${id} não encontrado.`);
@@ -46,5 +46,4 @@ export function deleteUser(id: number): User {
   const index = users.findIndex((user) => user.id === id);
   users.splice(index, 1);
 
-  return user;
 }

@@ -9,6 +9,6 @@
     "express": "^5.2.1"
   },
   "scripts": {
-    "dev": "node --watch ./src/server.ts"
+    "dev": "node --watch --env-file=.env ./src/server.ts"
   }
 }
