@@ -1,8 +1,15 @@
 import express from "express";
 import routerUsers from "./routes/user.route.ts";
+import path from "node:path"
+
+const client = path.join(import.meta.dirname, '../','../','web');
 
 const app = express();
-const port = Number(process.env.PORT ?? 3000);
+
 app.use(express.json());
+
 app.use("/users", routerUsers);
-app.listen(port);
+
+app.use(express.static(client));
+
+app.listen(process.env.PORT);

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang='pt-br'>
+
+<head>
+  <meta charset='UTF-8' />
+  <title>Corcoiote</title>
+</head>
+
+<body>
+
+
+  <div> </div>
+
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+  <script type="text/babel">
+    const container = document.querySelector('div');
+
+    const root = ReactDOM.createRoot(container);
+
+    
+
+
+
+    const InvoiceTable = (props) => {
+      return <table border='1' >
+        <thead>
+          <tr>
+            <th>Cliente</th>
+            <th>Valor</th>
+            <th>Data de Emissão</th>
+            <th>Data de Vencimento</th>
+            <th>Situação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Contrutora Meridiano</td>
+            <td>R$ 1.250,00</td>
+            <td>10/10/2026</td>
+            <td>16/11/2026</td>
+            <td>Pendente</td>
+          </tr>
+        </tbody>
+      </table>
+    };
+
+    const InvoiceRow = 0;
+
+    const Tittle = () => <h1>Faturas</h1>;
+
+    const app = () => {
+      return <>
+        <Tittle />
+        <InvoiceTable />
+      </>
+    }
+
+    root.render(app());
+
+  </script>
+</body>
+
+</html>
