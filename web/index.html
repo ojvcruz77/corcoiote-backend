@@ -9,98 +9,10 @@
 
 <body>
 
-
   <div> </div>
 
-  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="module" src="/src/main.tsx"> </script>
 
-
-  <script type="text/babel">
-    const container = document.querySelector('div');
-
-    const root = ReactDOM.createRoot(container);
-
-    const invoices = [{
-      id: 1,
-      amount: '1250,00',
-      status: 'Pendente',
-      issuDate: '10/10/2026',
-      dueDate: '16/11/2026',
-      customer: {
-        id: 1,
-        name: 'Constutora Meridiano',
-        email: 'contato@meridiano@gmail.com'
-      }
-    }, {
-      id: 2,
-      amount: '600,00',
-      status: 'Pendente',
-      issuDate: '10/12/2026',
-      dueDate: '11/01/2029',
-      customer: {
-        id: 1,
-        name: 'Constutora Odebrech',
-        email: 'contato@odebrech.com'
-      }
-    }, {
-      id: 3,
-      amount: '9000,00',
-      status: 'Pendente',
-      issuDate: '19/08/2026',
-      dueDate: '16/11/2026',
-      customer: {
-        id: 1,
-        name: 'Constutora Brasil',
-        email: 'contato@brazil.com'
-      },
-    }]
-
-
-
-    const InvoiceTable = (props) => {
-      return <table border='1' >
-        <thead>
-          <tr>
-            <th>Cliente</th>
-            <th>Valor</th>
-            <th>Data de Emissão</th>
-            <th>Data de Vencimento</th>
-            <th>Situação</th>
-          </tr>
-        </thead>
-        <tbody>
-          {invoices.map((invoice) => (
-            <InvoiceRow key={invoice.id} object={invoice} />
-          ))}
-        </tbody>
-      </table>
-    };
-
-    const Tittle = () => <h1>Faturas</h1>;
-
-    const InvoiceRow = (props) => {
-      return <tr>
-        <td>{props.object.customer.name}</td>
-        <td>R$ {props.object.amount}</td>
-        <td>{props.object.issuDate}</td>
-        <td>{props.object.dueDate}</td>
-        <td>{props.object.status}</td>
-      </tr>
-    }
-      
-
-    const app = () => {
-      return <>
-        <Tittle />
-        <InvoiceTable />
-      </>
-    }
-
-    root.render(app());
-
-  </script>
 </body>
 
 </html>
