@@ -1,49 +1,33 @@
-import {}  from "../mocks/user.mock.ts";
-import type { User, CreateUser, UpdateUser } from "../types/user.type.ts";
+import prisma from "../lib/prisma.ts";
+import type { CreateUser, UpdateUser } from "../schemas/user.schemas.ts";
+import type { User } from "../types/user.type.ts";
 
-export function findAllUsers(): User[] {
-  return users;
+export async function findAllUsers(): Promise<User[]> {
+  return prisma.user.findMany({ orderBy: { id: "asc" } });
 }
 
-export function findUserById(id: number): User {
-  const user = users.find((user) => user.id === id);
+export async function findUserById(id: number): Promise<User> {
+  const user = await prisma.user.findUnique({ where: { id } });
 
   if (!user) throw new Error(`Usuário de id ${id} não encontrado.`);
 
   return user;
 }
 
-export function InsertUser({ name, email, password }: CreateUser): User {
-  const user: User = {
-    id: users[users.length - 1].id + 1,
-    name,
-    email,
-    password,
-  };
-
-  users[users.length] = user;
-
-  return user;
+export async function insertUser(datas: CreateUser): Promise<User> {
+  return prisma.user.create({ data: datas });
 }
 
-export function modifyUser(id: number, { name, email, password }: UpdateUser): User {
-  const user = findUserById(id);
+export async function modifyUser(id: number, datas: UpdateUser): Promise<User> {
+  await findUserById(id);
 
-  if(!user) throw new Error(`Usuário de id ${id} não encontrado.`);
-
-  if (name) user.name = name;
-  if (email) user.email = email;
-  if (password) user.password = password;
-
-  return user;
+  return prisma.user.update({
+    where: { id },
+    data: datas,
+  });
 }
 
-export function removeUser(id: number) {
-  const user = findUserById(id);
-
-  if(!user) throw new Error(`Usuário de id ${id} não encontrado.`);
-
-  const index = users.findIndex((user) => user.id === id);
-  users.splice(index, 1);
-
+export async function removeUser(id: number): Promise<void> {
+  await findUserById(id);
+  await prisma.user.delete({ where: { id } });
 }

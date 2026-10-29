@@ -4,8 +4,3 @@ export type User = {
   email: string;
   password: string;
 };
-
-export type CreateUser = Omit<User, "id">;
-
-export type UpdateUser = Partial<Omit<User, "id">>;
-

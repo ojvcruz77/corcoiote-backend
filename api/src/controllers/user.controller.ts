@@ -1,41 +1,41 @@
 import * as UserService from "../services/user.service.ts";
 import type { Request, Response } from "express";
-import type { CreateUser, UpdateUser } from "../types/user.type.ts";
+import type { CreateUser, UpdateUser } from "../schemas/user.schemas.ts";
 
-export function getAllUsers(_req: Request, res: Response): void {
-  const users = UserService.findAllUsers();
+export async function getAllUsers(_req: Request, res: Response): Promise<void> {
+  const users = await UserService.findAllUsers();
 
   res.status(200).json(users);
 }
 
-export function getUserById(req: Request, res: Response): void {
+export async function getUserById(req: Request, res: Response): Promise<void> {
   const id = Number(req.params.id);
-  const user = UserService.findUserById(id);
+  const user = await UserService.findUserById(id);
 
   res.status(200).json(user);
 }
 
-export function createUser(req: Request, res: Response): void {
+export async function createUser(req: Request, res: Response): Promise<void> {
   const { name, email, password } = req.body as CreateUser;
 
-  const user = UserService.InsertUser({ name, email, password });
+  const user = await UserService.insertUser({ name, email, password });
 
   res.status(201).json(user);
 }
 
-export function updateUser(req: Request, res: Response): void {
+export async function updateUser(req: Request, res: Response): Promise<void> {
   const id = Number(req.params.id);
   const { name, email, password } = req.body as UpdateUser;
 
-  const user = UserService.modifyUser(id, { name, email, password });
+  const user = await UserService.modifyUser(id, { name, email, password });
 
   res.status(200).json(user);
 }
 
-export function deletUser(req: Request, res: Response): void {
+export async function deletUser(req: Request, res: Response): Promise<void> {
   const id = Number(req.params.id);
 
-  UserService.removeUser(id);
+  await UserService.removeUser(id);
 
   res.status(204).send();
 }
