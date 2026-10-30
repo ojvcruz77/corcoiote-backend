@@ -1,4 +1,4 @@
-type InvoiceStatus = 'Paid' | 'Pending';
+export type InvoiceStatus = 'Paid' | 'Pending';
 
 export interface InvoiceTableProps {
   datas: Invoice[];
@@ -9,10 +9,9 @@ export interface Invoice {
   ammount: number;
   status: InvoiceStatus;
   issuedDate: String;
-  dueDate?: String;
+  dueDate: String;
   customer: {
     name: string;
     email: string;
   };
 }
-;

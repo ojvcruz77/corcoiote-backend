@@ -4,7 +4,7 @@ import { Invoice } from './interfaceType';
 const container = document.querySelector('div');
 const invoices: Invoice[] = [{
   id: 1,
-  ammount: 1000,
+  ammount: 48547,
   status: 'Pending',
   issuedDate: '2026-09-10',
   dueDate: '2026-10-15',
@@ -37,6 +37,7 @@ const invoices: Invoice[] = [{
 export default function App() {
 
   return <>
+    <h1>Faturas</h1>
     <InvoiceTable datas={invoices}/>
 
   </>
