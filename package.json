@@ -1,8 +1,11 @@
 {
   "name": "corcoiote",
   "author": "João Victor",
-  "Scripts": {},
   "devDependencies": {
     "@biomejs/biome": "2.5.15"
+  },
+  "scripts": {
+    "check:web": "biome check ./web",
+    "fix:web": "biome check --write ./web"
   }
 }

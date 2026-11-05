@@ -1,12 +1,9 @@
-import {Invoice} from "./interfaceType";
-import {formatCurrency, formatDate,formatStatus} from "./utils";
-  
-
+import type { Invoice } from "./interfaceType";
+import { formatCurrency, formatDate, formatStatus } from "./utils";
 
 interface InvoiceRowProps {
   props: Invoice;
 }
-
 
 export function InvoiceRow(data: InvoiceRowProps) {
   const { props } = data;
