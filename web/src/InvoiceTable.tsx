@@ -7,17 +7,7 @@ interface InvoiceTableProps {
 
 export default function InvoiceTable(datas: InvoiceTableProps) {
   return (
-    <table
-      style={{
-        borderCollapse: "collapse",
-        width: "100%",
-        backgroundColor: "#1E2A38",
-        color: "aliceblue",
-        textAlign: "left",
-        padding: "8px",
-        borderBottom: "1px solid #ddd"
-      }}
-    >
+    <table>
       <thead>
         <tr>
           <th>Cliente</th>
